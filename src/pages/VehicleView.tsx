@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
+import { Detail } from '../components/Detail';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
@@ -22,24 +23,18 @@ export function VehicleView() {
       </header>
 
       <dl>
-        <dt>Model:</dt>
-        <dd>{vehicle.model}</dd>
-        <dt>Manufacturer:</dt>
-        <dd>{vehicle.manufacturer}</dd>
-        <dt>Length:</dt>
-        <dd>{vehicle.length}</dd>
-        <dt>Crew:</dt>
-        <dd>{vehicle.crew}</dd>
-        <dt>Passengers:</dt>
-        <dd>{vehicle.passengers}</dd>
-        <dt>Max atmosphering speed:</dt>
-        <dd>{vehicle.max_atmosphering_speed}</dd>
-        <dt>Cargo capacity:</dt>
-        <dd>{vehicle.cargo_capacity}</dd>
-        <dt>Consumables:</dt>
-        <dd>{vehicle.consumables}</dd>
-        <dt>Vehicle class:</dt>
-        <dd>{vehicle.vehicle_class}</dd>
+        <Detail label="Model" value={vehicle.model} />
+        <Detail label="Manufacturer" value={vehicle.manufacturer} />
+        <Detail label="Length" value={vehicle.length} />
+        <Detail label="Crew" value={vehicle.crew} />
+        <Detail label="Passengers" value={vehicle.passengers} />
+        <Detail
+          label="Max atmosphering speed"
+          value={vehicle.max_atmosphering_speed}
+        />
+        <Detail label="Cargo capacity" value={vehicle.cargo_capacity} />
+        <Detail label="Consumables" value={vehicle.consumables} />
+        <Detail label="Vehicle class" value={vehicle.vehicle_class} />
       </dl>
 
       <nav>

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
+import { Detail } from '../components/Detail';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
@@ -22,24 +23,18 @@ export function ShipView() {
       </header>
 
       <dl>
-        <dt>Model:</dt>
-        <dd>{ship.model}</dd>
-        <dt>Manufacturer:</dt>
-        <dd>{ship.manufacturer}</dd>
-        <dt>Length:</dt>
-        <dd>{ship.length}</dd>
-        <dt>Crew:</dt>
-        <dd>{ship.crew}</dd>
-        <dt>Passengers:</dt>
-        <dd>{ship.passengers}</dd>
-        <dt>Max atmosphering speed:</dt>
-        <dd>{ship.max_atmosphering_speed}</dd>
-        <dt>Cargo capacity:</dt>
-        <dd>{ship.cargo_capacity}</dd>
-        <dt>Consumables:</dt>
-        <dd>{ship.consumables}</dd>
-        <dt>Ship class:</dt>
-        <dd>{ship.starship_class}</dd>
+        <Detail label="Model" value={ship.model} />
+        <Detail label="Manufacturer" value={ship.manufacturer} />
+        <Detail label="Length" value={ship.length} />
+        <Detail label="Crew" value={ship.crew} />
+        <Detail label="Passengers" value={ship.passengers} />
+        <Detail
+          label="Max atmosphering speed"
+          value={ship.max_atmosphering_speed}
+        />
+        <Detail label="Cargo capacity" value={ship.cargo_capacity} />
+        <Detail label="Consumables" value={ship.consumables} />
+        <Detail label="Ship class" value={ship.starship_class} />
       </dl>
 
       <nav>

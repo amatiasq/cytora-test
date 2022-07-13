@@ -9,7 +9,7 @@ export interface SwapiLinkSetProps {
 }
 
 export function SwapiLinkSet({ title, kind, items }: SwapiLinkSetProps) {
-  if (!items) {
+  if (!items?.length) {
     return null;
   }
 

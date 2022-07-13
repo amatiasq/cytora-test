@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
+import { Detail } from '../components/Detail';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
@@ -22,20 +23,13 @@ export function SpeciesView() {
       </header>
 
       <dl>
-        <dt>Classification:</dt>
-        <dd>{species.classification}</dd>
-        <dt>Designation:</dt>
-        <dd>{species.designation}</dd>
-        <dt>Average height:</dt>
-        <dd>{species.average_height}</dd>
-        <dt>Average lifespan:</dt>
-        <dd>{species.average_lifespan}</dd>
-        <dt>Eye colors:</dt>
-        <dd>{species.eye_colors}</dd>
-        <dt>Hair colors:</dt>
-        <dd>{species.hair_colors}</dd>
-        <dt>Language:</dt>
-        <dd>{species.language}</dd>
+        <Detail label="Classification" value={species.classification} />
+        <Detail label="Designation" value={species.designation} />
+        <Detail label="Average height" value={species.average_height} />
+        <Detail label="Average lifespan" value={species.average_lifespan} />
+        <Detail label="Eye colors" value={species.eye_colors} />
+        <Detail label="Hair colors" value={species.hair_colors} />
+        <Detail label="Language" value={species.language} />
       </dl>
 
       <nav>

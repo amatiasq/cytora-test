@@ -21,12 +21,12 @@ export class ClientStorage<T> {
   }
 
   read() {
-    const value = localStorage.getItem(this.key);
+    const value = sessionStorage.getItem(this.key);
     return value ? this.deserialise(value) : this.defaultValue;
   }
 
   write(value: T) {
     const json = this.serialise(value);
-    localStorage.setItem(this.key, json);
+    sessionStorage.setItem(this.key, json);
   }
 }

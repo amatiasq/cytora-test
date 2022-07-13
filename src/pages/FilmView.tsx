@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
+import { Detail } from '../components/Detail';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
@@ -22,14 +23,10 @@ export function FilmView() {
       </header>
 
       <dl>
-        <dt>Director:</dt>
-        <dd>{film.director}</dd>
-        <dt>Producer:</dt>
-        <dd>{film.producer}</dd>
-        <dt>Release date:</dt>
-        <dd>{film.release_date}</dd>
-        <dt>Opening crawl:</dt>
-        <dd>{film.opening_crawl}</dd>
+        <Detail label="Director" value={film.director} />
+        <Detail label="Producer" value={film.producer} />
+        <Detail label="Release date" value={film.release_date} />
+        <Detail label="Opening crawl" value={film.opening_crawl} />
       </dl>
 
       <nav>

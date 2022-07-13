@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
+import { Detail } from '../components/Detail';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
@@ -22,16 +23,11 @@ export function LocationView() {
       </header>
 
       <dl>
-        <dt>Diameter:</dt>
-        <dd>{location.diameter}</dd>
-        <dt>Climate:</dt>
-        <dd>{location.climate}</dd>
-        <dt>Terrain:</dt>
-        <dd>{location.terrain}</dd>
-        <dt>Surface water:</dt>
-        <dd>{location.surface_water}</dd>
-        <dt>Population:</dt>
-        <dd>{location.population}</dd>
+        <Detail label="Diameter" value={location.diameter} />
+        <Detail label="Climate" value={location.climate} />
+        <Detail label="Terrain" value={location.terrain} />
+        <Detail label="Surface water" value={location.surface_water} />
+        <Detail label="Population" value={location.population} />
       </dl>
 
       <nav>

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
+import { Detail } from '../components/Detail';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { Spinner } from '../components/Spinner';
 import { SwapiLink } from '../components/SwapLink';
@@ -23,16 +24,11 @@ export function CharacterView() {
       </header>
 
       <dl>
-        <dt>Birth year:</dt>
-        <dd>{character.birth_year}</dd>
-        <dt>Eye color:</dt>
-        <dd>{character.eye_color}</dd>
-        <dt>Hair color:</dt>
-        <dd>{character.hair_color}</dd>
-        <dt>Height:</dt>
-        <dd>{character.height}</dd>
-        <dt>Mass:</dt>
-        <dd>{character.mass}</dd>
+        <Detail label="Birth year" value={character.birth_year} />
+        <Detail label="Eye color" value={character.eye_color} />
+        <Detail label="Hair color" value={character.hair_color} />
+        <Detail label="Height" value={character.height} />
+        <Detail label="Mass" value={character.mass} />
       </dl>
 
       <nav>
