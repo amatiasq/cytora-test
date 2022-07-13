@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 const API_ROOT = 'https://swapi.dev/api';
 
+const cache = new Map<string, Promise<unknown>>();
+
 export function useSwapi<T>(path: string, initial: T) {
   const [data, setData] = useState<T>(initial);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,10 +16,15 @@ export function useSwapi<T>(path: string, initial: T) {
       setIsLoading(true);
     }
 
-    fetch(url, { signal: abort.signal })
-      .then((res) => res.json())
-      .then(setData)
-      .finally(() => setIsLoading(false));
+    const cached = cache.get(url) as Promise<T> | null;
+    const promise =
+      cached || fetch(url, { signal: abort.signal }).then((res) => res.json());
+
+    if (!cached) {
+      cache.set(url, promise);
+    }
+
+    promise.then(setData).finally(() => setIsLoading(false));
 
     return () => abort.abort();
 
