@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SwapiUrl } from '../types/SwapiUrl';
 import { ClientStorage } from '../util/ClientStorage';
 
 const storage = new ClientStorage('favourites', {
@@ -9,7 +10,7 @@ const storage = new ClientStorage('favourites', {
 
 const favourites = storage.read();
 
-export function useFavorite(url: string) {
+export function useFavorite(url: SwapiUrl) {
   const [isFavorite, setIsFavorite] = useState(favourites.has(url));
 
   useEffect(() => {

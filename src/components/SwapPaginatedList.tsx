@@ -1,8 +1,15 @@
+import styled from '@emotion/styled';
 import { ReactNode, useState } from 'react';
 import { useSwapi } from '../hooks/useSwapi';
 import { Paginated } from '../types/Paginated';
 import { Pagination } from './Pagination';
 import { Spinner } from './Spinner';
+
+const List = styled.ul`
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+`;
 
 export interface SwapPaginatedListProps<T> {
   apiPath: string;
@@ -22,7 +29,7 @@ export function SwapPaginatedList<T>({
 
   return (
     <>
-      <ul>{list.results.map(children)}</ul>
+      <List>{list.results.map(children)}</List>
       <Pagination {...list} onNavigate={setPage} />
     </>
   );

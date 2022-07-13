@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import { useFavorite } from '../hooks/useFavorite';
+import { SwapiItem } from '../types/SwapiItem';
 
 const styles = css`
   width: 2rem;
@@ -18,7 +19,7 @@ const activeStyle = css`
 `;
 
 export interface FavoriteButtonProps {
-  item: { url: string };
+  item: SwapiItem;
 }
 
 export function FavoriteButton({ item }: FavoriteButtonProps) {

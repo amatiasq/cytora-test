@@ -9,7 +9,6 @@ const storage = new ClientStorage('swapi-cache', {
 
 const API_ROOT = 'https://swapi.dev/api';
 
-const loading = new Map<string, Promise<unknown>>();
 const cache = storage.read();
 
 export function useSwapi<T>(path: string, initial: T) {
@@ -18,7 +17,9 @@ export function useSwapi<T>(path: string, initial: T) {
 
   useEffect(() => {
     const abort = new AbortController();
-    const url = path.startsWith(API_ROOT) ? path : `${API_ROOT}/${path}`;
+    const url = path.startsWith(API_ROOT)
+      ? path
+      : `${API_ROOT}/${path}`.replace('//', '/');
 
     if (cache.has(url)) {
       setData(cache.get(url) as T);
@@ -29,16 +30,8 @@ export function useSwapi<T>(path: string, initial: T) {
       setIsLoading(true);
     }
 
-    // If the request is already running we don't create another one, just reuse it
-    const request = loading.get(url) as Promise<T> | null;
-    const promise =
-      request || fetch(url, { signal: abort.signal }).then((res) => res.json());
-
-    if (!request) {
-      loading.set(url, promise);
-    }
-
-    promise
+    fetch(url, { signal: abort.signal })
+      .then((res) => res.json())
       .then((x) => {
         cache.set(url, x);
         setData(x);
