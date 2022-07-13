@@ -3,14 +3,19 @@ import { useFavorite } from '../hooks/useFavorite';
 import { SwapiItem } from '../types/SwapiItem';
 
 const styles = css`
-  width: 2rem;
-  height: 2rem;
+  --_icon-size: var(--icon-size, 2em);
+  width: var(--_icon-size);
+  height: var(--_icon-size);
 `;
 
 const pathStyle = css`
   stroke-width: 2px;
   stroke: var(--border-color);
   fill: transparent;
+
+  :hover {
+    fill: var(--primary-color);
+  }
 `;
 
 const activeStyle = css`
