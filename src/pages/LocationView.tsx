@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
 import { Detail } from '../components/Detail';
-import { FavoriteButton } from '../components/FavoriteButton';
+import { DetailList } from '../components/DetailList';
+import { ItemToggle } from '../components/ItemToggle';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
 import { useSwapi } from '../hooks/useSwapi';
@@ -17,18 +18,15 @@ export function LocationView() {
 
   return (
     <Content>
-      <header>
-        <h2>{location.name}</h2>
-        <FavoriteButton item={location} />
-      </header>
+      <ItemToggle item={location}>{location.name}</ItemToggle>
 
-      <dl>
+      <DetailList>
         <Detail label="Diameter" value={location.diameter} />
         <Detail label="Climate" value={location.climate} />
         <Detail label="Terrain" value={location.terrain} />
         <Detail label="Surface water" value={location.surface_water} />
         <Detail label="Population" value={location.population} />
-      </dl>
+      </DetailList>
 
       <nav>
         <SwapiLinkSet title="Appears in" kind="film" items={location.films} />

@@ -10,20 +10,17 @@ import { Content } from './Content';
 
 function App() {
   return (
-    <>
-      <Content as="h1">Cytora test app</Content>
-      <Content>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/character/:id" element={<CharacterView />} />
-          <Route path="/film/:id" element={<FilmView />} />
-          <Route path="/location/:id" element={<LocationView />} />
-          <Route path="/ship/:id" element={<ShipView />} />
-          <Route path="/species/:id" element={<SpeciesView />} />
-          <Route path="/vehicle/:id" element={<VehicleView />} />
-        </Routes>
-      </Content>
-    </>
+    <Content>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/character/:id" element={<CharacterView />} />
+        <Route path="/film/:id" element={<FilmView />} />
+        <Route path="/location/:id" element={<LocationView />} />
+        <Route path="/ship/:id" element={<ShipView />} />
+        <Route path="/species/:id" element={<SpeciesView />} />
+        <Route path="/vehicle/:id" element={<VehicleView />} />
+      </Routes>
+    </Content>
   );
 }
 

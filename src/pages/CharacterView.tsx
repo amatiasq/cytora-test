@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
 import { Detail } from '../components/Detail';
-import { FavoriteButton } from '../components/FavoriteButton';
+import { DetailList } from '../components/DetailList';
+import { ItemToggle } from '../components/ItemToggle';
 import { Spinner } from '../components/Spinner';
 import { SwapiLink } from '../components/SwapLink';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
@@ -18,18 +19,15 @@ export function CharacterView() {
 
   return (
     <Content>
-      <header>
-        <h2>{character.name}</h2>
-        <FavoriteButton item={character} />
-      </header>
+      <ItemToggle item={character}>{character.name}</ItemToggle>
 
-      <dl>
+      <DetailList>
         <Detail label="Birth year" value={character.birth_year} />
         <Detail label="Eye color" value={character.eye_color} />
         <Detail label="Hair color" value={character.hair_color} />
         <Detail label="Height" value={character.height} />
         <Detail label="Mass" value={character.mass} />
-      </dl>
+      </DetailList>
 
       <nav>
         <h3>Homeworld</h3>

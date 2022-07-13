@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
 import { Detail } from '../components/Detail';
-import { FavoriteButton } from '../components/FavoriteButton';
+import { DetailList } from '../components/DetailList';
+import { ItemToggle } from '../components/ItemToggle';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
 import { useSwapi } from '../hooks/useSwapi';
@@ -17,12 +18,9 @@ export function SpeciesView() {
 
   return (
     <Content>
-      <header>
-        <h2>{species.name}</h2>
-        <FavoriteButton item={species} />
-      </header>
+      <ItemToggle item={species}>{species.name}</ItemToggle>
 
-      <dl>
+      <DetailList>
         <Detail label="Classification" value={species.classification} />
         <Detail label="Designation" value={species.designation} />
         <Detail label="Average height" value={species.average_height} />
@@ -30,7 +28,7 @@ export function SpeciesView() {
         <Detail label="Eye colors" value={species.eye_colors} />
         <Detail label="Hair colors" value={species.hair_colors} />
         <Detail label="Language" value={species.language} />
-      </dl>
+      </DetailList>
 
       <nav>
         <SwapiLinkSet title="Appears in" kind="film" items={species.films} />

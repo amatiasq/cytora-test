@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { Content } from '../components/Content';
 import { FavoriteButton } from '../components/FavoriteButton';
 import { SwapPaginatedList } from '../components/SwapPaginatedList';
 import { SwCharacter } from '../types/SwCharacter';
@@ -26,17 +27,21 @@ const Header = styled.header`
 
 export function Home() {
   return (
-    <SwapPaginatedList apiPath="/people">
-      {(character: SwCharacter) => (
-        <Container key={character.url}>
-          <Link to={`/character/${id(character)}`}>
-            <Header>
-              <FavoriteButton item={character} />
-              <h4>{character.name}</h4>
-            </Header>
-          </Link>
-        </Container>
-      )}
-    </SwapPaginatedList>
+    <>
+      <Content as="h1">Cytora test app</Content>
+
+      <SwapPaginatedList apiPath="/people">
+        {(character: SwCharacter) => (
+          <Container key={character.url}>
+            <Link to={`/character/${id(character)}`}>
+              <Header>
+                <FavoriteButton item={character} />
+                <h4>{character.name}</h4>
+              </Header>
+            </Link>
+          </Container>
+        )}
+      </SwapPaginatedList>
+    </>
   );
 }

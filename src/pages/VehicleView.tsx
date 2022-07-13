@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
 import { Detail } from '../components/Detail';
-import { FavoriteButton } from '../components/FavoriteButton';
+import { DetailList } from '../components/DetailList';
+import { ItemToggle } from '../components/ItemToggle';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
 import { useSwapi } from '../hooks/useSwapi';
@@ -17,12 +18,9 @@ export function VehicleView() {
 
   return (
     <Content>
-      <header>
-        <h2>{vehicle.name}</h2>
-        <FavoriteButton item={vehicle} />
-      </header>
+      <ItemToggle item={vehicle}>{vehicle.name}</ItemToggle>
 
-      <dl>
+      <DetailList>
         <Detail label="Model" value={vehicle.model} />
         <Detail label="Manufacturer" value={vehicle.manufacturer} />
         <Detail label="Length" value={vehicle.length} />
@@ -35,7 +33,7 @@ export function VehicleView() {
         <Detail label="Cargo capacity" value={vehicle.cargo_capacity} />
         <Detail label="Consumables" value={vehicle.consumables} />
         <Detail label="Vehicle class" value={vehicle.vehicle_class} />
-      </dl>
+      </DetailList>
 
       <nav>
         <SwapiLinkSet title="Appears in" kind="film" items={vehicle.films} />

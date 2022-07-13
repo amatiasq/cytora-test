@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Content } from '../components/Content';
 import { Detail } from '../components/Detail';
-import { FavoriteButton } from '../components/FavoriteButton';
+import { DetailList } from '../components/DetailList';
+import { ItemToggle } from '../components/ItemToggle';
 import { Spinner } from '../components/Spinner';
 import { SwapiLinkSet } from '../components/SwapLinkSet';
 import { useSwapi } from '../hooks/useSwapi';
@@ -17,17 +18,15 @@ export function FilmView() {
 
   return (
     <Content>
-      <header>
-        <h2>{film.title}</h2>
-        <FavoriteButton item={film} />
-      </header>
+      <ItemToggle item={film}>{film.title}</ItemToggle>
 
-      <dl>
+      <DetailList>
         <Detail label="Director" value={film.director} />
         <Detail label="Producer" value={film.producer} />
         <Detail label="Release date" value={film.release_date} />
-        <Detail label="Opening crawl" value={film.opening_crawl} />
-      </dl>
+      </DetailList>
+
+      <p>{film.opening_crawl}</p>
 
       <nav>
         <SwapiLinkSet
