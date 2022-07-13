@@ -19,7 +19,7 @@ export function useSwapi<T>(path: string, initial: T) {
     const abort = new AbortController();
     const url = path.startsWith(API_ROOT)
       ? path
-      : `${API_ROOT}/${path}`.replace('//', '/');
+      : `${API_ROOT}/${path}`.replace(/([^:])\/\//g, '$1/');
 
     if (cache.has(url)) {
       setData(cache.get(url) as T);
