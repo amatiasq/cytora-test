@@ -2,6 +2,7 @@
   "name": "cytora-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/cytora-test/",
   "dependencies": {
     "@emotion/css": "^11.9.0",
     "@emotion/styled": "^11.9.3",
