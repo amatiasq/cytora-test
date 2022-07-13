@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.d1fd8c0a.css",
-    "main.js": "/static/js/main.7c96a697.js",
-    "static/js/787.872d7d8d.chunk.js": "/static/js/787.872d7d8d.chunk.js",
-    "index.html": "/index.html",
-    "main.d1fd8c0a.css.map": "/static/css/main.d1fd8c0a.css.map",
-    "main.7c96a697.js.map": "/static/js/main.7c96a697.js.map",
-    "787.872d7d8d.chunk.js.map": "/static/js/787.872d7d8d.chunk.js.map"
+    "main.css": "/cytora-test/static/css/main.d1fd8c0a.css",
+    "main.js": "/cytora-test/static/js/main.9cf15f04.js",
+    "static/js/787.872d7d8d.chunk.js": "/cytora-test/static/js/787.872d7d8d.chunk.js",
+    "index.html": "/cytora-test/index.html",
+    "main.d1fd8c0a.css.map": "/cytora-test/static/css/main.d1fd8c0a.css.map",
+    "main.9cf15f04.js.map": "/cytora-test/static/js/main.9cf15f04.js.map",
+    "787.872d7d8d.chunk.js.map": "/cytora-test/static/js/787.872d7d8d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d1fd8c0a.css",
-    "static/js/main.7c96a697.js"
+    "static/js/main.9cf15f04.js"
   ]
 }
