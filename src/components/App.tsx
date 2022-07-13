@@ -1,13 +1,7 @@
-import { Character } from '../types/Character';
-import { CharacterSummary } from './CharacterSummary';
-import { SwapPaginatedList } from './SwapPaginatedList';
+import { CharacterList } from '../pages/CharacterList';
 
 function App() {
-  return (
-    <SwapPaginatedList apiPath="/people">
-      {(character: Character) => <CharacterSummary character={character} />}
-    </SwapPaginatedList>
-  );
+  return <CharacterList />;
 }
 
 export default App;

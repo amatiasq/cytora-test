@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
+import { ClientStorage } from '../util/ClientStorage';
+
+const storage = new ClientStorage('swapi-cache', {
+  default: new Map<string, unknown>(),
+  serialise: (x) => JSON.stringify(Array.from(x)),
+  deserialise: (x) => new Map(JSON.parse(x)),
+});
 
 const API_ROOT = 'https://swapi.dev/api';
 
-const cache = new Map<string, Promise<unknown>>();
+const loading = new Map<string, Promise<unknown>>();
+const cache = storage.read();
 
 export function useSwapi<T>(path: string, initial: T) {
   const [data, setData] = useState<T>(initial);
@@ -12,19 +20,31 @@ export function useSwapi<T>(path: string, initial: T) {
     const abort = new AbortController();
     const url = path.startsWith(API_ROOT) ? path : `${API_ROOT}/${path}`;
 
+    if (cache.has(url)) {
+      setData(cache.get(url) as T);
+      return;
+    }
+
     if (!isLoading) {
       setIsLoading(true);
     }
 
-    const cached = cache.get(url) as Promise<T> | null;
+    // If the request is already running we don't create another one, just reuse it
+    const request = loading.get(url) as Promise<T> | null;
     const promise =
-      cached || fetch(url, { signal: abort.signal }).then((res) => res.json());
+      request || fetch(url, { signal: abort.signal }).then((res) => res.json());
 
-    if (!cached) {
-      cache.set(url, promise);
+    if (!request) {
+      loading.set(url, promise);
     }
 
-    promise.then(setData).finally(() => setIsLoading(false));
+    promise
+      .then((x) => {
+        cache.set(url, x);
+        setData(x);
+        storage.write(cache);
+      })
+      .finally(() => setIsLoading(false));
 
     return () => abort.abort();
 

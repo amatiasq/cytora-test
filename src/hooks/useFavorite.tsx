@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
+import { ClientStorage } from '../util/ClientStorage';
 
-const favourite = new Set(readStorage());
+const storage = new ClientStorage('favourites', {
+  default: new Set<string>(),
+  serialise: (x) => JSON.stringify(Array.from(x)),
+  deserialise: (x) => new Set(JSON.parse(x)),
+});
+
+const favourites = storage.read();
 
 export function useFavorite(url: string) {
-  const [isFavorite, setIsFavorite] = useState(favourite.has(url));
+  const [isFavorite, setIsFavorite] = useState(favourites.has(url));
 
   useEffect(() => {
-    const stored = favourite.has(url);
+    const stored = favourites.has(url);
 
     if (stored !== isFavorite) {
       setIsFavorite(stored);
@@ -15,25 +22,14 @@ export function useFavorite(url: string) {
 
   function toggle() {
     if (isFavorite) {
-      favourite.delete(url);
+      favourites.delete(url);
     } else {
-      favourite.add(url);
+      favourites.add(url);
     }
 
-    writeStorage();
+    storage.write(favourites);
     setIsFavorite(!isFavorite);
   }
 
   return [isFavorite, toggle] as const;
-}
-
-function readStorage() {
-  const stored = localStorage.getItem('favourites');
-
-  return stored ? JSON.parse(stored) : [];
-}
-
-function writeStorage() {
-  const json = JSON.stringify(Array.from(favourite));
-  localStorage.setItem('favourites', json);
 }
