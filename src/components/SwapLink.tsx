@@ -1,16 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useSwapi } from '../hooks/useSwapi';
 import { SwapiItem } from '../types/SwapiItem';
+import { SwapiKinds } from '../types/SwapiKinds';
 import { SwapiUrl } from '../types/SwapiUrl';
 import { id } from '../util/id';
-
-export type SwapiKinds =
-  | 'character'
-  | 'location'
-  | 'film'
-  | 'vehicle'
-  | 'species'
-  | 'ship';
 
 export interface SwapiLinkProps {
   kind: SwapiKinds;

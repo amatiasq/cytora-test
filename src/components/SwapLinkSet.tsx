@@ -1,5 +1,6 @@
+import { SwapiKinds } from '../types/SwapiKinds';
 import { SwapiUrl } from '../types/SwapiUrl';
-import { SwapiKinds, SwapiLink } from './SwapLink';
+import { SwapiLink } from './SwapLink';
 
 export interface SwapiLinkSetProps {
   title: string;

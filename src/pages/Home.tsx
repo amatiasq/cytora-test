@@ -24,7 +24,7 @@ const Header = styled.header`
   }
 `;
 
-export function CharacterList() {
+export function Home() {
   return (
     <SwapPaginatedList apiPath="/people">
       {(character: SwCharacter) => (

@@ -21,6 +21,19 @@ export function LocationView() {
         <FavoriteButton item={location} />
       </header>
 
+      <dl>
+        <dt>Diameter:</dt>
+        <dd>{location.diameter}</dd>
+        <dt>Climate:</dt>
+        <dd>{location.climate}</dd>
+        <dt>Terrain:</dt>
+        <dd>{location.terrain}</dd>
+        <dt>Surface water:</dt>
+        <dd>{location.surface_water}</dd>
+        <dt>Population:</dt>
+        <dd>{location.population}</dd>
+      </dl>
+
       <nav>
         <SwapiLinkSet title="Appears in" kind="film" items={location.films} />
 
@@ -30,19 +43,6 @@ export function LocationView() {
           items={location.residents}
         />
       </nav>
-
-      {/* <dl>
-        <dt>Birth year:</dt>
-        <dd>{location.birth_year}</dd>
-        <dt>Eye color:</dt>
-        <dd>{location.eye_color}</dd>
-        <dt>Hair color:</dt>
-        <dd>{location.hair_color}</dd>
-        <dt>Height:</dt>
-        <dd>{location.height}</dd>
-        <dt>Mass:</dt>
-        <dd>{location.mass}</dd>
-      </dl> */}
     </Content>
   );
 }
