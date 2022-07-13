@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cytora-test/static/css/main.d1fd8c0a.css",
-    "main.js": "/cytora-test/static/js/main.616d2790.js",
+    "main.js": "/cytora-test/static/js/main.ef0b95a7.js",
     "static/js/787.872d7d8d.chunk.js": "/cytora-test/static/js/787.872d7d8d.chunk.js",
     "index.html": "/cytora-test/index.html",
     "main.d1fd8c0a.css.map": "/cytora-test/static/css/main.d1fd8c0a.css.map",
-    "main.616d2790.js.map": "/cytora-test/static/js/main.616d2790.js.map",
+    "main.ef0b95a7.js.map": "/cytora-test/static/js/main.ef0b95a7.js.map",
     "787.872d7d8d.chunk.js.map": "/cytora-test/static/js/787.872d7d8d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d1fd8c0a.css",
-    "static/js/main.616d2790.js"
+    "static/js/main.ef0b95a7.js"
   ]
 }
